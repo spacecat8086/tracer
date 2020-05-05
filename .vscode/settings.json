@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "winsock2.h": "c",
+        "stdio.h": "c",
+        "ws2tcpip.h": "c",
+        "icmpapi.h": "c",
+        "_ip_types.h": "c",
+        "_socket_types.h": "c",
+        "_fd_types.h": "c",
+        "icmp.h": "c",
+        "windows.h": "c",
+        "stdlib.h": "c",
+        "profileapi.h": "c"
+    }
+}

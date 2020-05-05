@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: gcc.exe build project",
+            "command": "D:\\tools\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-g",
+                "${workspaceFolder}\\tracer.c",
+                "${workspaceFolder}\\inet.c",
+                "-o",
+                "${workspaceFolder}\\tracer.exe",
+                "-lws2_32",
+                "-lNtdll"
+            ],
+            "options": {
+                "cwd": "D:\\tools\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "C/C++: gcc.exe nodebug",
+            "command": "D:\\tools\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\gcc.exe",
+            "args": [
+                "-g0",
+                "${workspaceFolder}\\tracer.c",
+                "${workspaceFolder}\\inet.c",
+                "-o",
+                "${workspaceFolder}\\tracer_release.exe",
+                "-lws2_32",
+                "-lNtdll"
+            ],
+            "options": {
+                "cwd": "D:\\tools\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }
+    ]
+}
