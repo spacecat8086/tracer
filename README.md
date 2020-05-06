@@ -1,2 +1,2 @@
 # tracer
-Traceroute utility based on the Windows Sockets API
+Traceroute utility based on Windows Sockets API
