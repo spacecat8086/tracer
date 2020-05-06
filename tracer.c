@@ -22,14 +22,15 @@ int     DATA_SIZE = 32,
 char    addrstr[16],
         addrname[256];
 
-int parsecmd(int argc, char *argv[]);
+int parsecmd(int argc, char *argv[], int *DATA_SIZE, int *HOPS,
+             int *ATTEMPTS, int *TIMEOUT, int *DONT_RESOLVE);
 void printresolvedname(SOCKADDR_IN *node, char *addrname, char *addrstr);
 
 int main(int argc, char *argv[])
 {
     puts("");
     // Read commandline args
-    if (parsecmd(argc, argv))
+    if (parsecmd(argc, argv, &DATA_SIZE, &HOPS, &ATTEMPTS, &TIMEOUT, &DONT_RESOLVE))
         return 42;
 
     // Retrieve timestamp resolution
@@ -194,7 +195,8 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-int parsecmd(int argc, char *argv[])
+int parsecmd(int argc, char *argv[], int *DATA_SIZE, int *HOPS,
+             int *ATTEMPTS, int *TIMEOUT, int *DONT_RESOLVE)
 {   
     if (argc < 2)
     {        
@@ -212,7 +214,7 @@ int parsecmd(int argc, char *argv[])
         {
             if (!strcmp(argv[i], "-t"))
             {
-                if (sscanf(argv[i + 1], "%d", &TIMEOUT)) {
+                if (sscanf(argv[i + 1], "%d", TIMEOUT)) {
                     valid_args = 1;
                     i += 2;
                     continue;
@@ -220,7 +222,7 @@ int parsecmd(int argc, char *argv[])
             }
             else if (!strcmp(argv[i], "-h"))
             {
-                if (sscanf(argv[i + 1], "%d", &HOPS)) {
+                if (sscanf(argv[i + 1], "%d", HOPS)) {
                     valid_args = 1;
                     i += 2;
                     continue;
@@ -228,7 +230,7 @@ int parsecmd(int argc, char *argv[])
             } 
             else if (!strcmp(argv[i], "-a"))
             {
-                if (sscanf(argv[i + 1], "%d", &ATTEMPTS)) {
+                if (sscanf(argv[i + 1], "%d", ATTEMPTS)) {
                     valid_args = 1;
                     i += 2;
                     continue;
@@ -236,7 +238,7 @@ int parsecmd(int argc, char *argv[])
             } 
             else if (!strcmp(argv[i], "-s"))
             {
-                if (sscanf(argv[i + 1], "%d", &DATA_SIZE)) {
+                if (sscanf(argv[i + 1], "%d", DATA_SIZE)) {
                     valid_args = 1;
                     i += 2;
                     continue;
@@ -245,7 +247,7 @@ int parsecmd(int argc, char *argv[])
         }
         if (!strcmp(argv[i], "-d"))
         {
-            DONT_RESOLVE = 1;
+            *DONT_RESOLVE = 1;
             valid_args = 1;
             i++;
             continue;
