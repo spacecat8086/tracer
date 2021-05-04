@@ -1,3 +1,6 @@
+#ifndef _INET_H_
+#define _INET_H_
+
 #ifndef _WINDOWS_
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -25,3 +28,5 @@ Checksum field in the header must be cleared */
 UINT16 checksum(UINT16 *ptr, int size);
 int ipheadersize(char *packet);
 unsigned long srcaddr(char *packet);
+
+#endif
